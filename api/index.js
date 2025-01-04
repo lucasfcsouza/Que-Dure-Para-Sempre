@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const auth = require('./routes/auth');
 
 const app = express();
 
@@ -19,20 +20,50 @@ module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Rota de teste
-  if (req.url === '/api/health') {
-    return res.json({
-      status: 'ok',
-      message: 'API está funcionando!',
-      timestamp: new Date().toISOString()
-    });
+  // Tratar requisições OPTIONS (CORS preflight)
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
   }
 
-  // Rota padrão
-  return res.json({
-    status: 'ok',
-    message: 'Bem-vindo à API!',
-    path: req.url,
-    method: req.method
-  });
+  // Extrair o caminho da URL
+  const path = req.url.split('?')[0];
+
+  // Roteamento
+  try {
+    switch (path) {
+      case '/api/health':
+        return res.json({
+          status: 'ok',
+          message: 'API está funcionando!',
+          timestamp: new Date().toISOString()
+        });
+
+      case '/api/auth/login':
+        return await auth.login(req, res);
+
+      case '/api/auth/register':
+        return await auth.register(req, res);
+
+      default:
+        // Rota padrão
+        return res.json({
+          status: 'ok',
+          message: 'Bem-vindo à API!',
+          path: path,
+          method: req.method,
+          availableRoutes: [
+            '/api/health',
+            '/api/auth/login',
+            '/api/auth/register'
+          ]
+        });
+    }
+  } catch (error) {
+    console.error('Erro:', error);
+    return res.status(500).json({
+      status: 'error',
+      message: 'Erro interno do servidor',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
+  }
 };
