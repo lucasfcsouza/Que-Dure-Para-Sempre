@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    opacity: 1;
+}
+
+/* Welcome Page */
+.gift-box {
+    text-align: center;
+}
+
+.gift-box img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+#open-surprise {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#open-surprise:hover {
+    transform: scale(1.05);
+}
+
+/* Content Page */
+.love-frame {
+    width: 100%;
+    max-width: 350px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.frame-header {
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#photo-container {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: #f0f0f0;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+#photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.frame-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.frame-controls button {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.message-section {
+    text-align: center;
+    margin: 20px 0;
+    padding: 0 20px;
+}
+
+#names {
+    color: #ff6b6b;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    font-family: 'Brush Script MT', cursive;
+}
+
+#love-message {
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.counter-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.counter-item {
+    text-align: center;
+    min-width: 70px;
+}
+
+.counter-item span:first-child {
+    font-size: 1.5em;
+    font-weight: bold;
+    display: block;
+}
+
+.music-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.music-section h3 {
+    margin-bottom: 10px;
+}
+
+audio {
+    width: 100%;
+    max-width: 300px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}

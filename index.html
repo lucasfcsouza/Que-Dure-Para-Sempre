@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa Especial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Primeira página -->
+        <div id="welcome-page" class="page active">
+            <div class="gift-box">
+                <img src="gift-heart.png" alt="Presente">
+                <button id="open-surprise">Abrir Surpresa!</button>
+            </div>
+        </div>
+
+        <!-- Segunda página -->
+        <div id="content-page" class="page">
+            <div class="love-frame">
+                <div class="frame-header">LOVE</div>
+                <div id="photo-container">
+                    <!-- Fotos serão carregadas aqui -->
+                </div>
+                <div class="frame-controls">
+                    <button id="prev-photo">&lt;</button>
+                    <span id="photo-counter">1/1</span>
+                    <button id="next-photo">&gt;</button>
+                </div>
+            </div>
+
+            <div class="message-section">
+                <h2 id="names">Nome & Nome</h2>
+                <p id="love-message">Sua mensagem especial aqui...</p>
+            </div>
+
+            <div class="counter-section">
+                <div class="counter-item">
+                    <span id="years">0</span>
+                    <span>anos</span>
+                </div>
+                <div class="counter-item">
+                    <span id="months">0</span>
+                    <span>meses</span>
+                </div>
+                <div class="counter-item">
+                    <span id="days">0</span>
+                    <span>dias</span>
+                </div>
+                <div class="counter-item">
+                    <span id="hours">0</span>
+                    <span>horas</span>
+                </div>
+                <div class="counter-item">
+                    <span id="seconds">0</span>
+                    <span>segundos</span>
+                </div>
+            </div>
+
+            <div class="music-section">
+                <h3>Nossa música 🎵</h3>
+                <audio id="love-song" controls>
+                    <source src="" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
