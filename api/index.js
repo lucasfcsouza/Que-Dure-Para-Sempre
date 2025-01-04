@@ -18,15 +18,24 @@ module.exports = async (req, res) => {
   // Configurar CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
 
   // Tratar requisições OPTIONS (CORS preflight)
   if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+    res.status(200).end();
+    return;
   }
 
   // Extrair o caminho da URL
   const path = req.url.split('?')[0];
+
+  // Log para debug
+  console.log('Request:', {
+    method: req.method,
+    path: path,
+    body: req.body,
+    headers: req.headers
+  });
 
   // Roteamento
   try {
